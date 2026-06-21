@@ -1,0 +1,10 @@
+{
+  "name": "CKB Rust Dev",
+  "image": "mcr.microsoft.com/devcontainers/rust:1-1-bookworm",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y build-essential sed bash coreutils clang-18 llvm-18 lld-18 && rustup install 1.71.1 && rustup default 1.71.1 && rustup target add riscv64imac-unknown-none-elf && cargo install cargo-generate --version 0.17.0 && cargo install ckb-debugger --version 0.117.0",
+  "customizations": {
+    "vscode": {
+      "extensions": ["rust-lang.rust-analyzer"]
+    }
+  }
+}
