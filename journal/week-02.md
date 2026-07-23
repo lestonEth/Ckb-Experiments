@@ -10,14 +10,14 @@
 ## Overview
 
 This week I transitioned from studying the fundamentals of Nervos CKB to
-implementing a practical Type Script in Rust. The project focuses on
+implementing a practical Type Script in Rust. The pr®oject focuses on
 validating a profile Cell stored on-chain and enforcing rules on how
 that Cell can be created and updated.
 
 ## Objectives
 
 -   Understand CKB Type Scripts
--   Read Cell data using `ckb-std`
+-   Read Cell data using `ckb-std`®
 -   Validate transaction outputs
 -   Return meaningful error codes
 -   Write unit tests
