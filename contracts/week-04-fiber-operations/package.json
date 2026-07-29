@@ -1,0 +1,22 @@
+{
+  "name": "week-04-fiber-payments",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A TypeScript toolkit for Fiber Network peer, channel, invoice and payment operations.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "fiber": "tsx src/index.ts",
+    "check": "tsc --noEmit",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0"
+  }
+}
