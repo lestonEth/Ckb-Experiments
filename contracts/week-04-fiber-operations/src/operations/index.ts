@@ -1,11 +1,10 @@
-import { connectPeer } from './operations/connectPeer.js';
-import { getPayment } from './operations/getPayment.js';
-import { listChannels } from './operations/listChannels.js';
-import { listPayments } from './operations/listPayments.js';
-import { listPeers } from './operations/listPeers.js';
-import { newInvoice } from './operations/newInvoice.js';
-import { parseInvoice } from './operations/parseInvoice.js';
-import { sendPayment } from './operations/sendPayment.js';
+import { connectPeer } from './connectPeer.js';
+import { listChannels } from './listChannels.js';
+import { listPayments } from './listPayments.js';
+import { listPeers } from './listPeers.js';
+import { newInvoice } from './newInvoice.js';
+import { parseInvoice } from './parseInvoice.js';
+import { sendPayment } from './sendPayment.js';
 
 import {
     assertPubkey,
@@ -258,10 +257,6 @@ async function main(): Promise<void> {
                     first,
                     'payment hash',
                 );
-
-            printJson(
-                await getPayment(paymentHash),
-            );
 
             return;
         }

@@ -321,3 +321,88 @@ fn test_week_04_fiber_operations() {
         .expect("pass verification");
     println!("consume cycles: {}", cycles);
 }
+
+// generated unit test for contract week-05-cell-counter
+#[test]
+fn test_week_05_cell_counter() {
+    // deploy contract
+    let mut context = Context::default();
+    let out_point = context.deploy_cell_by_name("week-05-cell-counter");
+
+    // prepare scripts
+    let lock_script = context
+        .build_script(&out_point, Bytes::from(vec![42]))
+        .expect("script");
+
+    // prepare cells
+    let input_out_point = context.create_cell(
+        CellOutput::new_builder()
+            .capacity(1000)
+            .lock(lock_script.clone())
+            .build(),
+        Bytes::new(),
+    );
+    let input = CellInput::new_builder()
+        .previous_output(input_out_point)
+        .build();
+    let outputs = vec![
+        CellOutput::new_builder()
+            .capacity(500)
+            .lock(lock_script.clone())
+            .build(),
+        CellOutput::new_builder()
+            .capacity(500)
+            .lock(lock_script)
+            .build(),
+    ];
+
+    let outputs_data = vec![Bytes::new(); 2];
+
+    // build transaction
+    let tx = TransactionBuilder::default()
+        .input(input)
+        .outputs(outputs)
+        .outputs_data(outputs_data.pack())
+        .build();
+    let tx = context.complete_tx(tx);
+
+    // run
+    let cycles = context
+        .verify_tx(&tx, 10_000_000)
+        .expect("pass verification");
+    println!("consume cycles: {}", cycles);
+}
+
+use counter::{
+    validate_increment,
+    CounterData,
+    CounterError,
+};
+
+#[test]
+fn valid_counter_transition() {
+    let input = CounterData::new(5);
+    let output = CounterData::new(6);
+
+    assert_eq!(
+        validate_increment(
+            input.counter,
+            output.counter
+        ),
+        Ok(())
+    );
+}
+
+#[test]
+fn invalid_counter_transition() {
+    let input = CounterData::new(5);
+    let output = CounterData::new(8);
+
+    assert_eq!(
+        validate_increment(
+            input.counter,
+            output.counter
+        ),
+        Err(CounterError::InvalidTransition)
+    );
+}
