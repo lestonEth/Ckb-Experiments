@@ -1,0 +1,11 @@
+[package]
+name = "week-08-multisig-treasury"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = []
+library = []
+
+[dependencies]
+ckb-std = "0.17"

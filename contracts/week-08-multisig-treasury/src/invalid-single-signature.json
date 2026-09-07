@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "threshold": 2,
+  "signers": [
+    "alice",
+    "bob",
+    "charlie"
+  ],
+  "authorizations": [
+    {
+      "signer": "alice",
+      "signature": "valid"
+    }
+  ]
+}

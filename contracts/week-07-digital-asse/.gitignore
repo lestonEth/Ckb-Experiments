@@ -1,0 +1,4 @@
+/build
+/target
+dapp/digital-asset-app/node_modules/
+dapp/digital-asset-app/.next/
